@@ -1,0 +1,95 @@
+h1. The Need-To-Know
+
+h1. Variables and Data Types
+
+:inlinecode
+var a = 1; # Number
+
+var b = "Hello"; # String
+
+var c = [1,2,3]; # array/dictionary, 0-index
+
+var d = {"name": "Abraham", gender: "male", 'age': 29}; #object/hash
+
+#accessing data in array and object
+
+console.log(c[0]); # 1
+
+console.log(d['name']); # Abraham
+
+console.log(d.gender); # male
+:endinlinecode
+
+h1. Functions
+
+:inlinecode
+function helloWorld() {
+  return "Hello world";
+};
+
+function helloTo(name) {return "Hello " + name;};
+
+function helloTo(first_name, last_name) {
+  var full_name = first_name + ' ' + last_name;
+  return "Hello " + full_name;
+};
+
+var f = function(){
+  return "Hello f";
+};
+
+f(); # Hello f
+function(){
+  return "Hello f";
+}(); # Hello f
+:endinlinecode
+
+h1. Functions: first class citizens
+
+:inlinecode
+function callThis(code) {
+  return code();
+};
+
+callThis(helloWorld); # Hello world
+
+callThis(function(){ return "Hello mars"}); # Hello mars
+
+function mainFunc() {
+  function nestedFunc() {
+    return "in deep";
+  };
+  return nestedFunc();
+};
+
+d.calcAgeInXYears = function(years) { return this.age + years; };
+d;
+d.calcAgeInXYears(11); # 40
+:endinlinecode
+
+h1. Four ways of calling a function
+
+:inlinecode
+#Method Invocation
+d.calcAgeInXYears(11);
+
+#Function Invocation
+helloWorld();
+
+#Constructor Invocation
+var Person = function(name){ this.name = name; };
+Person.prototype.getName = function(){ return this.name; };
+var person1 = new Person("Geraldo");
+var person2 = new Person("Heraldo");
+person1.getName(); # Geraldo
+person2.getName(); # Heraldo
+
+#Apply Invocation
+var arrayz = [3,4]; # array of params
+function add(x,y){ return x + y };
+add.apply(null, arrayz); # 7; 1st param binds to 'this', 2nd is array of params
+:endinlinecode
+
+h1. And Now for the Challenge
+
+* Good Luck!
